@@ -5,11 +5,10 @@ import pickle
 import numpy as np
 
 # --- Load Trained Model ---
-with open("C:/Users/Admin/Desktop/internship_projects/attention_detection_employees/rf_model.pkl", "rb") as f:
-
+with open("rf_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-with open("C:/Users/Admin/Desktop/internship_projects/attention_detection_employees/trained_columns.pkl", "rb") as f:
+with open("trained_columns.pkl", "rb") as f:
     trained_columns = pickle.load(f)
 
 # --- Streamlit App Header ---
@@ -54,5 +53,6 @@ if prediction == 1:
     st.error(f"⚠️ High Attrition Risk! (Probability: {proba:.2f})")
 else:
     st.success(f"✅ Likely to Stay (Probability: {proba:.2f})")
+
 
 st.caption("Model trained on IBM HR Analytics dataset (Kaggle)")
