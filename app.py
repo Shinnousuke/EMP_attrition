@@ -20,7 +20,8 @@ satisfaction_level = st.slider("Job Satisfaction (1 - Low to 4 - High)", 1, 4, 3
 income = st.number_input("Monthly Income", min_value=1000, value=5000, step=100)
 age = st.slider("Age", 18, 60, 30)
 years_at_company = st.slider("Years at Company", 0, 40, 5)
-overtime = st.selectbox("OverTime", ["Yes", "No"])
+total_experience = st.slider("Total Experience (Years)", 0, 50, 7)
+worklife_balance = st.slider("WorkLife Balance (1 - Poor to 4 - Excellent)", 1, 4, 3)
 job_role = st.selectbox("Job Role", [
     "Sales Executive", "Research Scientist", "Laboratory Technician",
     "Manufacturing Director", "Healthcare Representative",
@@ -35,7 +36,8 @@ input_data = {
     "MonthlyIncome": income,
     "Age": age,
     "YearsAtCompany": years_at_company,
-    "OverTime_Yes": 1 if overtime == "Yes" else 0,
+    "TotalWorkingYears": total_experience,
+    "WorkLifeBalance": worklife_balance,
     "Gender_Male": 1 if gender == "Male" else 0,
     "JobRole_" + job_role: 1,
     "MaritalStatus_" + marital_status: 1
@@ -53,6 +55,5 @@ if prediction == 1:
     st.error(f"⚠️ High Attrition Risk! (Probability: {proba:.2f})")
 else:
     st.success(f"✅ Likely to Stay (Probability: {proba:.2f})")
-
 
 st.caption("Model trained on IBM HR Analytics dataset (Kaggle)")
